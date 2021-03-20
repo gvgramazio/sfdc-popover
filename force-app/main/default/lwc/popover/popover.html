@@ -1,0 +1,28 @@
+<template>
+  <section class={cssClass} role="dialog">
+    <button class={cssCloseButtonClass} onclick={close} title="Close dialog">
+      <lightning-icon class="slds-current-color" icon-name="utility:close" alternative-text="Close dialog" title="Close dialog" size="xx-small"></lightning-icon>
+    </button>
+    <header class={cssHeaderClass}>
+      <template if:true={hasHeaderIcon}>
+        <div class="slds-media slds-media_center slds-has-flexi-truncate">
+          <div class="slds-media__figure">
+            <lightning-icon class="slds-current-color" icon-name={headerIconName} size="xx-small"></lightning-icon>
+          </div>
+          <div class="slds-media__body">
+            <slot name="header" onslotchange={handleHeaderSlotChange}></slot>
+          </div>
+        </div>
+      </template>
+      <template if:false={hasHeaderIcon}>
+        <slot name="header" onslotchange={handleHeaderSlotChange}></slot>
+      </template>
+    </header>
+    <div class={cssBodyClass}>
+      <slot name="body"></slot>
+    </div>
+    <footer class={cssFooterClass}>
+      <slot name="footer" onslotchange={handleFooterSlotChange}></slot>
+    </footer>
+  </section>
+</template>
