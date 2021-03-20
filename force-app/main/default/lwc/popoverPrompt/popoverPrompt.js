@@ -3,6 +3,7 @@ import { LightningElement, api } from 'lwc';
 export default class PopoverPrompt extends LightningElement {
     hasFooter = false;
     hasHeader = false;
+    @api headerIconName;
     isOpen = false;
     @api position;
 
@@ -63,6 +64,10 @@ export default class PopoverPrompt extends LightningElement {
             baseClasses.push(['slds-hide']);
         }
         return baseClasses.join(' ');
+    }
+
+    get hasHeaderIcon() {
+        return !!this.headerIconName;
     }
 
     handleFooterSlotChange(event) {
