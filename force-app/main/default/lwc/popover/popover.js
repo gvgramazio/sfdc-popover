@@ -2,6 +2,7 @@ import { LightningElement, api } from 'lwc';
 
 export default class Popover extends LightningElement {
     isOpen = false;
+    @api feedbackState;
     hasFooter = false;
     hasHeader = false;
     @api hasBodySmall = false;
@@ -77,6 +78,14 @@ export default class Popover extends LightningElement {
                 baseClasses.push(['slds-popover_full-width']);
                 break;
         }
+        switch (this.feedbackState) {
+            case 'error':
+                baseClasses.push(['slds-popover_error']);
+                break;
+            case 'warning':
+                baseClasses.push(['slds-popover_warning']);
+                break;
+        }
         if (!this.isOpen) {
             baseClasses.push(['slds-popover_hide']);
         }
@@ -87,6 +96,20 @@ export default class Popover extends LightningElement {
         const baseClasses = ['slds-popover__body'];
         if (this.hasBodySmall) { // Applies max-height and overflow-y
             baseClasses.push(['slds-popover__body_small']);
+        }
+        return baseClasses.join(' ');
+    }
+
+    get cssCloseButtonClass() {
+        const baseClasses = [
+            'slds-button',
+            'slds-button_icon',
+            'slds-button_icon-small',
+            'slds-float_right',
+            'slds-popover__close'
+        ];
+        if (this.feedbackState == 'error') {
+            baseClasses.push(['slds-button_icon-inverse']);
         }
         return baseClasses.join(' ');
     }

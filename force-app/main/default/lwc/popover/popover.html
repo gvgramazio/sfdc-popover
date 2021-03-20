@@ -1,7 +1,7 @@
 <template>
   <section class={cssClass} role="dialog">
-    <button class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close" onclick={close} title="Close dialog">
-      <lightning-icon icon-name="utility:close" alternative-text="Close dialog" title="Close dialog" size="xx-small"></lightning-icon>
+    <button class={cssCloseButtonClass} onclick={close} title="Close dialog">
+      <lightning-icon class="slds-current-color" icon-name="utility:close" alternative-text="Close dialog" title="Close dialog" size="xx-small"></lightning-icon>
     </button>
     <header class={cssHeaderClass}>
       <slot name="header" onslotchange={handleHeaderSlotChange}></slot>
