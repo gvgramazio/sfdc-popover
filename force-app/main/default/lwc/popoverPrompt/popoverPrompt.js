@@ -1,6 +1,7 @@
 import { LightningElement, api } from 'lwc';
 
 export default class PopoverPrompt extends LightningElement {
+    hasFooter = false;
     isOpen = false;
 
     @api
@@ -24,5 +25,17 @@ export default class PopoverPrompt extends LightningElement {
             baseClasses.push(['slds-popover_hide']);
         }
         return baseClasses.join(' ');
+    }
+
+    get cssFooterClass() {
+        const baseClasses = ['slds-popover__footer'];
+        if (!this.hasFooter) {
+            baseClasses.push(['slds-hide']);
+        }
+        return baseClasses.join(' ');
+    }
+
+    handleFooterSlotChange(event) {
+        this.hasFooter = event.target.assignedElements().length !== 0;
     }
 }
