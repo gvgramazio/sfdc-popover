@@ -5,4 +5,53 @@
 .icon-popover__popover-container {
     left: 50%;
     top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.icon-popover__nubbin_left {
+    transform: translate(30px, calc(-50% + 3px));
+}
+
+.icon-popover__nubbin_left-top {
+    transform: translate(30px, -1.5rem);
+}
+
+.icon-popover__nubbin_left-bottom {
+    transform: translate(30px, calc(-100% + 30px));
+}
+
+.icon-popover__nubbin_top {
+    transform: translate(-50%, 30px);
+}
+
+.icon-popover__nubbin_top-left {
+    transform: translate(-25px, 30px);
+}
+
+.icon-popover__nubbin_top-right {
+    transform: translate(calc(-100% + 25px), 30px);
+}
+
+.icon-popover__nubbin_right {
+    transform: translate(calc(-100% - 30px), calc(-50% + 3px));
+}
+
+.icon-popover__nubbin_right-top {
+    transform: translate(calc(-100% - 30px), -1.5rem);
+}
+
+.icon-popover__nubbin_right-bottom {
+    transform: translate(calc(-100% - 30px), calc(-100% + 30px));
+}
+
+.icon-popover__nubbin_bottom {
+    transform: translate(-50%, calc(-100% - 30px));
+}
+
+.icon-popover__nubbin_bottom-left {
+    transform: translate(-25px, calc(-100% - 30px));
+}
+
+.icon-popover__nubbin_bottom-right {
+    transform: translate(calc(-100% + 25px), calc(-100% - 30px));
 }

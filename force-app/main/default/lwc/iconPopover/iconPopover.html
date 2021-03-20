@@ -3,7 +3,7 @@
         <button class="slds-button slds-button_icon-error" onclick={togglePopover}>
             <lightning-icon class="slds-current-color" icon-name="utility:error" size="xx-small"></lightning-icon>
         </button>
-        <div class="slds-is-absolute icon-popover__popover-container">
+        <div class={cssPopoverContainerClass}>
             <c-popover feedback-state={feedbackState} has-body-small="true" nubbin={nubbin} width={width}>
                 <template if:true={hasHeader}>
                     <slot name="header" onslotchange={handleHeaderSlotChange} slot="header"></slot>
