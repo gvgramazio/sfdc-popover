@@ -2,6 +2,7 @@ import { LightningElement, api } from 'lwc';
 
 export default class PopoverPrompt extends LightningElement {
     hasFooter = false;
+    hasHeader = false;
     isOpen = false;
     @api position;
 
@@ -56,7 +57,19 @@ export default class PopoverPrompt extends LightningElement {
         return baseClasses.join(' ');
     }
 
+    get cssHeaderClass() {
+        const baseClasses = ['slds-popover__header'];
+        if (!this.hasHeader) {
+            baseClasses.push(['slds-hide']);
+        }
+        return baseClasses.join(' ');
+    }
+
     handleFooterSlotChange(event) {
         this.hasFooter = event.target.assignedElements().length !== 0;
+    }
+
+    handleHeaderSlotChange(event) {
+        this.hasHeader = event.target.assignedElements().length !== 0;
     }
 }
