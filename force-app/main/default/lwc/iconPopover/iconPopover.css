@@ -1,0 +1,8 @@
+.icon-popover__main-container {
+    width: fit-content;
+}
+
+.icon-popover__popover-container {
+    left: 50%;
+    top: 50%;
+}

@@ -1,3 +1,18 @@
 <template>
-    
+    <div class="slds-is-relative icon-popover__main-container">
+        <button class="slds-button slds-button_icon-error" onclick={togglePopover}>
+            <lightning-icon class="slds-current-color" icon-name="utility:error" size="xx-small"></lightning-icon>
+        </button>
+        <div class="slds-is-absolute icon-popover__popover-container">
+            <c-popover feedback-state={feedbackState} has-body-small="true" nubbin={nubbin} width={width}>
+                <template if:true={hasHeader}>
+                    <slot name="header" onslotchange={handleHeaderSlotChange} slot="header"></slot>
+                </template>
+                <slot name="body" slot="body"></slot>
+                <template if:true={hasFooter}>
+                    <slot name="footer" onslotchange={handleFooterSlotChange} slot="footer"></slot>
+                </template>
+            </c-popover>
+        </div>
+    </div>
 </template>
