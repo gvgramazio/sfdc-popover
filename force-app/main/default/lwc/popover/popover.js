@@ -5,6 +5,7 @@ export default class Popover extends LightningElement {
     hasFooter = false;
     hasHeader = false;
     @api hasBodySmall = false;
+    @api width;
 
     @api
     close(event) {
@@ -23,6 +24,20 @@ export default class Popover extends LightningElement {
 
     get cssClass() {
         const baseClasses = ['slds-popover', 'slds-nubbin_left'];
+        switch (this.width) {
+            case 'small':
+                baseClasses.push(['slds-popover_small']);
+                break;
+            case 'medium':
+                baseClasses.push(['slds-popover_medium']);
+                break;
+            case 'large':
+                baseClasses.push(['slds-popover_large']);
+                break;
+            case 'full-width':
+                baseClasses.push(['slds-popover_full-width']);
+                break;
+        }
         if (!this.isOpen) {
             baseClasses.push(['slds-popover_hide']);
         }
