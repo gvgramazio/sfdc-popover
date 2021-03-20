@@ -130,6 +130,14 @@ export default class Popover extends LightningElement {
         return baseClasses.join(' ');
     }
 
+    get hasHeaderIcon() {
+        return this.feedbackState == 'error' || this.feedbackState == 'warning';
+    }
+
+    get headerIconName() {
+        return this.feedbackState == 'error' || this.feedbackState == 'warning' ? 'utility:' + this.feedbackState : '';
+    }
+
     handleFooterSlotChange(event) {
         this.hasFooter = event.target.assignedElements().length !== 0;
     }
