@@ -5,6 +5,7 @@ export default class Popover extends LightningElement {
     hasFooter = false;
     hasHeader = false;
     @api hasBodySmall = false;
+    @api nubbin;
     @api width;
 
     @api
@@ -23,7 +24,45 @@ export default class Popover extends LightningElement {
     }
 
     get cssClass() {
-        const baseClasses = ['slds-popover', 'slds-nubbin_left'];
+        const baseClasses = ['slds-popover'];
+        switch (this.nubbin) {
+            case 'left':
+                baseClasses.push(['slds-nubbin_left']);
+                break;
+            case 'left-top':
+                baseClasses.push(['slds-nubbin_left-top']);
+                break;
+            case 'left-bottom':
+                baseClasses.push(['slds-nubbin_left-bottom']);
+                break;
+            case 'top':
+                baseClasses.push(['slds-nubbin_top']);
+                break;
+            case 'top-left':
+                baseClasses.push(['slds-nubbin_top-left']);
+                break;
+            case 'top-right':
+                baseClasses.push(['slds-nubbin_top-right']);
+                break;
+            case 'right':
+                baseClasses.push(['slds-nubbin_right']);
+                break;
+            case 'right-top':
+                baseClasses.push(['slds-nubbin_right-top']);
+                break;
+            case 'right-bottom':
+                baseClasses.push(['slds-nubbin_right-bottom']);
+                break;
+            case 'bottom':
+                baseClasses.push(['slds-nubbin_bottom']);
+                break;
+            case 'bottom-left':
+                baseClasses.push(['slds-nubbin_bottom-left']);
+                break;
+            case 'bottom-right':
+                baseClasses.push(['slds-nubbin_bottom-right']);
+                break;
+        }
         switch (this.width) {
             case 'small':
                 baseClasses.push(['slds-popover_small']);
