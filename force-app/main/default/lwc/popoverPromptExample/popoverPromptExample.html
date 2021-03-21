@@ -1,0 +1,93 @@
+<template>
+  <section class="slds-card">
+    <div class="slds-card__header">
+      <h2 class="slds-card__header-title slds-truncate">Popover Prompt Example</h2>
+    </div>
+    <div class="slds-card__body slds-card__body_inner">
+      <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_1-of-2">
+          <div class="slds-form" role="list">
+            <div class="slds-form__row">
+              <div class="slds-form__item" role="listitem">
+                <div class="slds-form-element slds-form-element_horizontal">
+                  <label class="slds-form-element__label">Has Header</label>
+                  <div class="slds-form-element__control">
+                    <lightning-input onchange={handleToggleChanges} type="toggle" name="hasHeader" label="Has Header" class="slds-form-element_horizontal" variant="label-hidden"></lightning-input>
+                  </div>
+                </div>
+              </div>
+              <div class="slds-form__item" role="listitem">
+                <div class="slds-form-element slds-form-element_horizontal">
+                  <label class="slds-form-element__label">Has Footer</label>
+                  <div class="slds-form-element__control">
+                    <lightning-input onchange={handleToggleChanges} type="toggle" name="hasFooter" label="Has Footer" class="slds-form-element_horizontal" variant="label-hidden"></lightning-input>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slds-form__row">
+              <div class="slds-form__item" role="listitem">
+                <div class="slds-form-element slds-form-element_horizontal">
+                  <lightning-input onchange={handleHeaderIconNameChange} type="input" label="Header Icon Name" name="headerIconName"></lightning-input>
+                </div>
+              </div>
+              <div class="slds-form__item" role="listitem">
+                <div class="slds-form-element slds-form-element_horizontal">
+                  <lightning-input onchange={handleBodyIconNameChange} type="input" label="Body Icon Name" name="bodyIconName"></lightning-input>
+                </div>
+              </div>
+            </div>
+            <div class="slds-form__row">
+              <div class="slds-form__item" role="listitem">
+                <div class="slds-form-element slds-form-element_horizontal">
+                  <lightning-combobox
+                    name="position"
+                    label="Position"
+                    value={position}
+                    placeholder="Select Position"
+                    options={positionOptions}
+                    onchange={handlePositionChange}>
+                  </lightning-combobox>
+                </div>
+              </div>
+            </div>
+            <div class="slds-form__row">
+              <div class="slds-form__item" role="listitem">
+                <div class="slds-form-element slds-form-element_horizontal">
+                  <lightning-button-group class="slds-align_absolute-center">
+                    <lightning-button onclick={openPrompt} label="Open Prompt"></lightning-button>
+                    <lightning-button onclick={closePrompt} label="Close Prompt"></lightning-button>
+                    <lightning-button onclick={togglePrompt} label="Toggle Prompt"></lightning-button>
+                  </lightning-button-group>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slds-col slds-size_1-of-2">
+          <c-popover-prompt body-icon-name={bodyIconName} header-icon-name={headerIconName} position={position}>
+            <template if:true={hasHeader}>
+              <h2 slot="header" class="slds-popover_prompt__heading">Header Title</h2>
+            </template>
+            <h2 slot="body" class="slds-popover_prompt__heading">Title</h2>
+            <p slot="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p slot="body">Pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum odio. Bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida.</p>
+            <p slot="body">Volutpat diam ut venenatis tellus in metus vulputate. Tortor pretium viverra suspendisse potenti nullam ac tortor.</p>
+            <p slot="body">Scelerisque purus semper eget duis at tellus at urna condimentum. Purus faucibus ornare suspendisse sed nisi lacus sed.</p>
+            <p slot="body">Molestie at elementum eu facilisis sed odio morbi quis. Nunc eget lorem dolor sed viverra ipsum.</p>
+            <p slot="body">Vitae congue mauris rhoncus aenean vel. At tellus at urna condimentum mattis pellentesque id.</p>
+            <template if:true={hasFooter}>
+              <div slot="footer" class="slds-grid slds-grid_vertical-align-center">
+                <button class="slds-button slds-button_neutral slds-col_bump-right" onclick={closePopoverPrompt}>Dismiss</button>
+                <span class="slds-popover_prompt__action-link">
+                  <a href="#" class="slds-button">Learn more</a>
+                </span>
+                <button class="slds-button slds-button_brand" onclick={closePopoverPrompt}>Save</button>
+              </div>
+            </template>
+          </c-popover-prompt>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
